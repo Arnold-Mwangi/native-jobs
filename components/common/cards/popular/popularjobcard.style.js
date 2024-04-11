@@ -4,7 +4,7 @@ import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
   container: (selectedJob, item) => ({
-    width: 250,
+    
     padding: SIZES.xLarge,
     backgroundColor: selectedJob === item.idCategory ? COLORS.primary : "#FFF",
     borderRadius: SIZES.medium,
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   }),
   logoContainer: (selectedJob, item) => ({
     width: 50,
-    height: 50,
+    height: 25,
     backgroundColor: selectedJob === item.idCategory ? "#FFF" : COLORS.white,
     borderRadius: SIZES.medium,
     justifyContent: "center",
