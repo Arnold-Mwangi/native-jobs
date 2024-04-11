@@ -4,11 +4,11 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { imageChecker } from '../../../../utils'
 import styles from './popularjobcard.style'
 
-const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
+const PopularJobCard = ({ item, selectedJob, handleNavigate }) => {
+  console.log("item in job card",item)
   return (
-    <TouchableOpacity style={styles.container(selectedJob, item)}
-      onPress={() => handleCardPress(item)}>
-      <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
+    <TouchableOpacity style={styles.container(selectedJob, item)} onPress={handleNavigate}>
+      <TouchableOpacity style={styles.logoContainer(selectedJob, item)} onPress={handleNavigate}>
         <Image
           source={{
             uri: imageChecker(item.strCategoryThumb) ?
@@ -20,9 +20,7 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
       </TouchableOpacity>
       <Text style={styles.compnayName} numberOfLines={1}>{item.strCategory}</Text>
       <View style={styles.infoContainer}>
-        <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>
-          {`${item.strCategoryDescription}`}
-        </Text>
+
       </View>
 
     </TouchableOpacity>
