@@ -14,7 +14,13 @@ const CategoryDetails = () => {
     const { data, isLoading, error, refetch } = useFetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${strCategory}`)
     const [refreshing, setRefreshing] = useState(false)
     const onRefresh = () => { }
-  
+    const handleCardPress = (meal, data) => {
+        router.push({
+            pathname: `/meal_details/${meal.idMeal}`,
+            state: { mealData: meal }
+        });
+    }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
             <Stack.Screen
@@ -49,7 +55,7 @@ const CategoryDetails = () => {
                         <Text>Something went wrong</Text>
                     ) : !data.meals ? (
                         <Text>No {strCategory} found</Text>
-                    ):(
+                    ) : (
                         data.meals?.map((meal, index) => (
                             <View style={{ padding: SIZES.medium, paddingBottom: 100 }} key={index + 1}>
                                 <Company
@@ -57,8 +63,9 @@ const CategoryDetails = () => {
                                     strArea={meal.strArea}
                                     strMeal={meal.strMeal}
                                     strCategory={meal.strCategory}
-                                    
-                                    
+                                    handleNavigate={() => handleCardPress(meal)}
+
+
 
                                 />
                                 <JobTabs
