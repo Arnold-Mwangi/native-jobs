@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, ActivityIndicator, FlatList, Touchable } from 'react-native'
+import { View, Text, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native'
 import { useRouter } from 'expo-router'
 
 import styles from './popularjobs.style';
@@ -10,9 +10,14 @@ import useFetch from '../../../hook/useFetch'
 
 const Popularjobs = () => {
   const router = useRouter();
-  const { data, isLoading, error } = useFetch()
+  const { data, isLoading, error } = useFetch('https://www.themealdb.com/api/json/v1/1/categories.php')
 
-  console.log("data",data )
+  const [selectedJob, setSelectedJob] = useState()
+
+  const handleCardPress = item => {
+    // setSelectedJob(item);
+    router.push(`/category_details/${item.strCategory}`);
+  }
 
   return (
     <View style={styles.container}>
@@ -26,17 +31,19 @@ const Popularjobs = () => {
         {isLoading ? (
           <ActivityIndicator size='large' colors={COLORS.primary} />
         ) : error ? (
-         
+
           <Text>Something went wrong</Text>
         ) : (
           <FlatList
-            data={data}
+            data={data.categories}
             renderItem={({ item }) => (
               <PopularJobCard
                 item={item}
+
+                handleNavigate={() =>  handleCardPress(item)}
               />
             )}
-            keyExtractor={item => item?.job_id}
+            keyExtractor={item => item?.idCategory}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />
