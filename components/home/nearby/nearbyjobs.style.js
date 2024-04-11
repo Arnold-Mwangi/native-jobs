@@ -11,6 +11,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginTop: SIZES.small,
+    position: "sticky",
+    top: 0,
   },
   headerTitle: {
     fontSize: SIZES.large,
