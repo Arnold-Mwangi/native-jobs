@@ -24,7 +24,7 @@ const Welcome = () => {
 
       <View style={styles.container}>
         <Text style={styles.userName}>Hello Arnold</Text>
-        <Text style={styles.welcomeMessage}>Find your dream job</Text>
+        <Text style={styles.welcomeMessage}>Find your best recipe</Text>
       </View>
 
       <View style={styles.searchContainer}>
@@ -33,7 +33,7 @@ const Welcome = () => {
             style={styles.searchInput}
             value=""
             onChange={() => { }}
-            placeholder='What are you looking for? '
+            placeholder='What are you cooking today? '
           />
         </View>
         <TouchableOpacity style={styles.searchBtn} onPress={() => { }}>

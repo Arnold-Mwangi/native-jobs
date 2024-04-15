@@ -3,10 +3,11 @@ import { View, Text } from 'react-native'
 
 import styles from './tabs.style'
 
-const Tabs = () => {
+const Tabs = (meal) => {
+
   return (
     <View>
-      <Text>Tabs</Text>
+      {/* <Text>Tabs{meal.data.strMeal}</Text> */}
     </View>
   )
 }
